@@ -1,36 +1,46 @@
 import React from "react";
-import api from "../services/api";
+
 import Note from "./Note";
+import Button from "./Button";
 
-const handleUpdate = note => {
-  const id = note["_id"];
-  api.put(`/notes/${id}`, note);
-};
+const NoteList = ({
+  notes,
+  handleDelete,
+  handleSaveUpdateNote,
+  handleChangeDescription,
+  handleChangeTitle,
+  handleReloadAllNotes
+}) => {
+  const onChangeDescription = (description, index) => {
+    handleChangeDescription(description, index);
+  };
+  const onChangeTitle = (description, index) => {
+    handleChangeTitle(description, index);
+  };
 
-const NoteList = ({ notes }) => {
-  console.log(notes);
-
+  const onSaveUpdateNote = note => {
+    handleSaveUpdateNote(note);
+  };
   if (notes) {
-    return notes.map(note => {
-      let data = note["createdAt"].toString();
-      data = data.substring(0, 10);
-      console.log(note);
+    return notes.map((note, index) => {
       return (
-        <>
+        <React.Fragment key={note["_id"]}>
           <Note
-            key={note["_id"]}
-            title={note["title"]}
-            description={note["description"]}
-            date={data}
+            note={note}
+            onDelete={handleDelete}
+            onReloadAllNotes={handleReloadAllNotes}
+            index={index}
+            onChangeDescription={onChangeDescription}
+            onChangeTitle={onChangeTitle}
           />
-          <button
+          <Button
             onClick={() => {
-              handleUpdate(note);
+              onSaveUpdateNote(note);
             }}
           >
             Salvar Alterações
-          </button>
-        </>
+          </Button>
+        </React.Fragment>
       );
     });
   } else {

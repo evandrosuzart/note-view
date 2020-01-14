@@ -2,8 +2,7 @@ import React from "react";
 
 import InputField from "./InputField";
 import Title from "./Title";
-
-import api from "../services/api";
+import Button from "./Button";
 
 class NewNote extends React.Component {
   state = {
@@ -11,10 +10,10 @@ class NewNote extends React.Component {
     description: ""
   };
 
-  handleSubmit = () => {
+  onSubmit = () => {
     const { description, title } = this.state;
     const bodyRequest = { title, description };
-    api.post("/notes", bodyRequest);
+    this.props.handleSubmit(bodyRequest);
   };
   handleChangeTitle = value => {
     this.setState({ title: value });
@@ -39,7 +38,7 @@ class NewNote extends React.Component {
           title="Descrição"
           handleChange={this.handleChangeDescription}
         />
-        <button onClick={this.handleSubmit}>Cadastrar</button>
+        <Button onClick={this.onSubmit}>Cadastrar</Button>
       </>
     );
   }
