@@ -1,8 +1,10 @@
 import React from "react";
 
-import InputField from "./InputField";
-import Title from "./Title";
-import Button from "./Button";
+import "./new-note.css";
+
+import InputField from "../InputField";
+import Title from "../Title";
+import Button from "../Button";
 
 class NewNote extends React.Component {
   state = {
@@ -26,8 +28,9 @@ class NewNote extends React.Component {
   render() {
     const { title, description } = this.state;
     return (
-      <>
+      <div className="new-note">
         <Title>Cadastrar nova Anotação</Title>
+
         <InputField
           value={title}
           handleChange={this.handleChangeTitle}
@@ -39,7 +42,7 @@ class NewNote extends React.Component {
           handleChange={this.handleChangeDescription}
         />
         <Button onClick={this.onSubmit}>Cadastrar</Button>
-      </>
+      </div>
     );
   }
 }

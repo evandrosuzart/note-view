@@ -1,7 +1,9 @@
 import React from "react";
 
-import Note from "./Note";
-import Button from "./Button";
+import "./note-list.css";
+
+import Note from "../Note";
+import Button from "../Button";
 
 const NoteList = ({
   notes,
@@ -24,7 +26,7 @@ const NoteList = ({
   if (notes) {
     return notes.map((note, index) => {
       return (
-        <React.Fragment key={note["_id"]}>
+        <div className="note-list" key={note["_id"]}>
           <Note
             note={note}
             onDelete={handleDelete}
@@ -40,7 +42,7 @@ const NoteList = ({
           >
             Salvar Alterações
           </Button>
-        </React.Fragment>
+        </div>
       );
     });
   } else {

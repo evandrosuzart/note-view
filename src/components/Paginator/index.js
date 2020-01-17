@@ -1,10 +1,10 @@
 import React from "react";
-
-import Button from "./Button";
+import "./paginator.css";
+import Button from "../Button";
 const Paginator = ({ page, pages, total, onChangePage }) => {
   page = parseInt(page);
   return (
-    <>
+    <div className="paginator">
       <span>Total de registros: {total}</span>
       <br />
       <span>
@@ -29,7 +29,7 @@ const Paginator = ({ page, pages, total, onChangePage }) => {
           Página {page + 1}
         </Button>
       )}
-    </>
+    </div>
   );
 };
 

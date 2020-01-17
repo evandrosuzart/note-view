@@ -102,6 +102,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <NewNote handleSubmit={this.handleSubmit} />
+
         <NoteList
           notes={notes}
           handleDelete={this.handleDeleteNote}

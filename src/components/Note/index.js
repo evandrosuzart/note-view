@@ -1,8 +1,10 @@
 import React from "react";
 
-import Input from "./Input";
-import DateInput from "./DateInput";
-import Button from "./Button";
+import "./note.css";
+
+import Input from "../Input";
+import DateInput from "../DateInput";
+import Button from "../Button";
 
 const Note = ({
   note,
@@ -28,7 +30,7 @@ const Note = ({
   };
 
   return (
-    <>
+    <div className="note">
       <Input value={title} title="Título" handleChange={handleChangeTitle} />
       <Input
         value={description}
@@ -44,7 +46,7 @@ const Note = ({
       >
         Excluir Nota
       </Button>
-    </>
+    </div>
   );
 };
 
